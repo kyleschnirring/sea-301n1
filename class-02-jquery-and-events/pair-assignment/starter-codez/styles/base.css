@@ -27,9 +27,11 @@ address {
 
 a, a:link, a:active {
   color: #777;
+  text-decoration: none;
 }
 
 a:hover, a:focus {
+  color: #F5AF3D;
 }
 
 a:visited {
