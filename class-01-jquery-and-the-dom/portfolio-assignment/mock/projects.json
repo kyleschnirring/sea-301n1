@@ -1,0 +1,14 @@
+{
+  "projects":
+  [
+    {
+      "title": "Call of Cthulhu Investigator Generator",
+      "url": "http://cthulhu.sulonen.codes",
+      "thumb": "img/cthulhu-codes.png",
+      "technologies": ["AngularJS", "Node.js"],
+      "publishedDate": "2015-12-21",
+      "comment": "I created this website, primarily, as an opportunity to study AngularJS."
+    },
+    {}
+  ]
+}
