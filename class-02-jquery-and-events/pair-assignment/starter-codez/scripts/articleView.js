@@ -54,8 +54,8 @@ articleView.handleCategoryFilter = function() {
       $('article').fadeOut();
       $('article[data-category="' + $(this).val() + '"]').fadeIn();
     } else {
-      $('artcile').fadeIn();
-      $('artcile.template').hide();
+      $('article').fadeIn();
+      $('article.template').hide();
     }
     $('#author-filter').val('');
   });
@@ -72,8 +72,8 @@ articleView.handleMainNav = function() {
 };
 
 articleView.setTeasers = function() {
-  var $body = $('.article-body *:nth-of-type(n+2)'); // Hide elements beyond the first 2 in any artcile body.
-  $body.hide();
+  $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2 in any artcile body.
+
   // TODO: Add an event handler to reveal all the hidden elements,
   //       when the .read-on link is clicked. You can go ahead and hide the
   //       "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
@@ -82,7 +82,7 @@ articleView.setTeasers = function() {
   $('.read-on').on('click', function(e) {
     $(this).hide();
     e.preventDefault();
-    $(this).prev().fadeIn($body);
+    $('.article-body :nth-of-type(n+2)').fadeIn();
   });
 
 };
