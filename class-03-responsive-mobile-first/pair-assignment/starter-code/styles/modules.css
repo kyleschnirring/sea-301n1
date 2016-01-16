@@ -61,13 +61,15 @@
          - Main should be all on one row, with padding spaced better for a larger screen.
          - Just, ya know, try to make it look good! */
 @media only screen and (min-width: 960px) {
-  .icon-menu {
-    display: none;
+  .menu-items {
+    visibility: visible;
   }
   li {
     display: inline-table;
-
   }
 
+  #ham {
+    display: none;
+  }
 
 }

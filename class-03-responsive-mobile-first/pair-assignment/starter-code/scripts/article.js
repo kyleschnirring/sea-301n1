@@ -40,7 +40,3 @@ rawData.forEach(function(ele) {
 articles.forEach(function(a){
   $('#articles').append(a.toHtml())
 });
-
-$(function() {
-  $('.main-nav').show();
-})
