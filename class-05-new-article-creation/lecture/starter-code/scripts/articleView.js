@@ -80,10 +80,10 @@ articleView.create = function() {
   var newPost = new Article();
   newPost.title = $('#article-title').val();
   newPost.body = $('#article-body').val();
-  newPost.author = $('article-author').val();
-  newPost.authorUrl = $('article-author-url').val();
-  newPost.category = $('article-category').val();
-  newPost.published = $('article-published').val();
+  newPost.author = $('#article-author').val();
+  newPost.authorUrl = $('#article-author-url').val();
+  newPost.category = $('#article-category').val();
+  newPost.published = $('#article-published').val();
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(newPost.toHtml());
   // TODO: Activate the highlighting of any code blocks:
