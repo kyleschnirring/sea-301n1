@@ -64,7 +64,7 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later.
-
+  $('.main-nav .tab:first').click();
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
 
@@ -74,14 +74,22 @@ articleView.initNewArticlePage = function() {
 articleView.create = function() {
   // TODO: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
-
+  $('#articles').empty();
   // TODO: Instantiate an article based on what's in the form fields:
-
+  var newPost = new Article();
+  newPost.title = $('#article-title').val();
+  newPost.body = $('#article-body').val();
+  newPost.author = $('article-author').val();
+  newPost.authorUrl = $('article-author-url').val();
+  newPost.category = $('article-category').val();
+  newPost.published = $('article-published').val();
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
+  $('#articles').append(newPost.toHtml());
   // TODO: Activate the highlighting of any code blocks:
 
   // TODO: Export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#export-field').show();
+  $('#article-json').val(JSON.stringify(newPost) + ',');
 };
 
 

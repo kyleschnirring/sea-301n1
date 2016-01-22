@@ -10,19 +10,22 @@
 
 /* TODO: Add styles for the icon-menu class. It should be bigger, and off to the right. */
 .icon-menu {
-
+  float: right;
+  -moz-background-size: 50px;
+  background-size: 50px;
 }
 
 .main-nav {
   padding: 0.1em;
 }
 
-.main-nav ul {
-  display: none;
-  padding: 0;
-  list-style: none;
-  clear: both;
-}
+  .main-nav ul {
+    display: none;
+    padding: 0;
+    list-style: none;
+    clear: both;
+  }
+
 
 .main-nav:hover ul {
   display: block;
@@ -57,4 +60,16 @@
          - Hide the hamburger.
          - Main should be all on one row, with padding spaced better for a larger screen.
          - Just, ya know, try to make it look good! */
-/* @media only screen... */
+@media only screen and (min-width: 960px) {
+  .menu-items {
+    visibility: visible;
+  }
+  li {
+    display: inline-table;
+  }
+
+  #ham {
+    display: none;
+  }
+
+}
