@@ -2,6 +2,10 @@
   float: left;
 }
 
+#ham {
+  float: right;
+}
+
 .pull-right {
   float: right;
 }
