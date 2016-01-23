@@ -1,0 +1,17 @@
+body {
+  margin: 0 3em;
+}
+
+h3 {
+  margin-top: -.6em;
+  font-style: italic;
+}
+
+img {
+  height: 25%;
+  width: 25%;
+}
+
+a {
+  text-decoration: none;
+}

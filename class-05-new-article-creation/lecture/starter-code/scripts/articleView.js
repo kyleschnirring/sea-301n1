@@ -54,7 +54,6 @@ articleView.handleMainNav = function() {
 
 articleView.setTeasers = function() {
   $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2 in any artcile body.
-
   $('#articles').on('click', 'a.read-on', function(e) {
     e.preventDefault();
     $(this).parent().find('*').fadeIn();
@@ -64,24 +63,47 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later.
+  $('.tab-content').show();
+  articleView.handleMainNav();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
+  $('#export-field').hide();
+
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
+  $('#new-form').on('change', 'input, textarea', articleView.create);
 };
+
+$('#preview').on('click', () => {
+  $('#new-form').hide();
+    $('#export-field').show();
+  articleView.create();
+});
 
 articleView.create = function() {
   // TODO: Set up a var to hold the new article we are creating.
+  var newPost;
   // Clear out the #articles element, so we can put in the updated preview
-
+  $('#articles').empty();
   // TODO: Instantiate an article based on what's in the form fields:
-
+   newPost = new Article({
+    title: $('#article-title').val(),
+    body: $('#article-body').val(),
+    author: $('#article-author').val(),
+    authorUrl: $('#article-author-url').val(),
+    category: $('#article-category').val(),
+    published: $('#article-published').val()
+  });
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
+  $('#articles').append(newPost.toHtml());
   // TODO: Activate the highlighting of any code blocks:
-
+  $('#article-body').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
   // TODO: Export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#export-field').show();
+  $('#article-json').val(',\n' + JSON.stringify(newPost));
 };
 
 
@@ -91,4 +113,5 @@ articleView.initIndexPage = function() {
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
+
 };
