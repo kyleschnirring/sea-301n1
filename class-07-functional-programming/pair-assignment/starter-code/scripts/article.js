@@ -1,5 +1,4 @@
 (function(module) {
-  console.log('got here');
   function Article(opts) {
     this.author = opts.author;
     this.authorUrl = opts.authorUrl;
@@ -81,4 +80,5 @@
       };
     });
   };
+  module.Article = Article;
 })(window);
