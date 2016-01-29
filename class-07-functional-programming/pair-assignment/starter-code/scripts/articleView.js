@@ -1,5 +1,3 @@
-// DONE: Wrap the entire contents of this file in an IIFE.
-// Pass in to the IIFE a module, upon which objects can be attached for later access.
 (function(module) {
 
   // Configure a view object, to hold all our functions for dynamic updates and article-related event handlers.
@@ -10,8 +8,10 @@
       if (!$(this).hasClass('template')) {
         var val = $(this).find('address a').text();
         var optionTag = '<option value="' + val + '">' + val + '</option>';
-        $('#author-filter').append(optionTag);
-
+        if ($('#author-filter option[value="' + val + '"]').length === 0) {
+          $('#author-filter').append(optionTag);
+        }
+        
         val = $(this).attr('data-category');
         optionTag = '<option value="' + val + '">' + val + '</option>';
         if ($('#category-filter option[value="' + val + '"]').length === 0) {
@@ -103,7 +103,7 @@
 
   articleView.initIndexPage = function() {
     Article.all.forEach(function(a){
-      $('#articles').append(a.toHtml())
+      $('#articles').append(a.toHtml());
     });
 
     articleView.populateFilters();
@@ -114,15 +114,14 @@
   };
 
   articleView.initAdminPage = function() {
-    // TODO: Call the Handlebars `.compile` function, which will return a function for you to use where needed.
-    var template; // = ...?
+    var template = Handlebars.compile($('#author-template').text());
 
     // DONE: We use `forEach` here because we are relying on the side-effects of the callback function:
     // appending to the DOM.
     // The callback is not required to return anything.
     Article.numWordsByAuthor().forEach(function(stat) {
       $('.author-stats').append(template(stat));
-    })
+    });
 
     // DONE: Simply write the correct values to the page:
     $('#blog-stats .articles').text(Article.all.length);
